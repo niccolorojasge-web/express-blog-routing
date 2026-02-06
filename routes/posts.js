@@ -1,33 +1,32 @@
 const express = require('express')
-const postsphoto = express.Router();
-const menuPost =require('./menupost');
-const posts = require('./menupost');
+const router = express.Router();
+const posts = require('../data/posts');
 
 //rotte di crud
 
 //index
- postsphoto.get('/', function(req, res){
+ router.get('/', function(req, res){
     res.send('lista dei post');
  });
  //show
- postsphoto.get('/:id', function(req, req){
+ router.get('/:id', function(req, req){
 res.send('dettagli deei post' + req.params.id);  
  });
 //store
-postsphoto.post('/', function (req, res){
+router.post('/', function (req, res){
     res.send('creazione nuovo post');
 });
 //update
-postsphoto.put('/:id', function(req, res){
+router.put('/:id', function(req, res){
     res.send('modifica integrale del post'+ req.params.id);
 });
 //modify
-postsphoto.patch('/:id', function(req, res){
+router.patch('/:id', function(req, res){
 res.send('modifica parziale post'+ req.params.id);
 });
 //delete
-postsphoto.delete('/:id', function(req, res){
+router.delete('/:id', function(req, res){
     res.send('elimina post'+req.params.id);
 });
-module.exports= postsphoto;
-posts.use("/menupost",menuPost)
+
+module.exports = router;
